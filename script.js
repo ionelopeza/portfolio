@@ -1,5 +1,5 @@
 // ================================================
-//  SCRIPT.JS — Lógica interactiva del CV
+//  SCRIPT.JS — Lóxica interactiva do CV
 // ================================================
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -15,6 +15,9 @@ function cargarCV() {
     document.getElementById('footerNombre').textContent =
         `© ${new Date().getFullYear()} ${nombre}`;
 
+    if (cvData.personal.sobre) {
+        document.getElementById('sobreTexto').textContent = cvData.personal.sobre;
+    }
     renderExperiencia();
     renderEducacion();
     renderHabilidades();
@@ -30,7 +33,7 @@ function renderExperiencia(filtro = '') {
             .toLowerCase().includes(filtro.toLowerCase())
     );
     if (datos.length === 0) {
-        lista.innerHTML = '<p class="sin-resultados">No se encontraron resultados.</p>';
+        lista.innerHTML = '<p class="sin-resultados">Non se atoparon resultados.</p>';
         return;
     }
     lista.innerHTML = datos.map(exp => `
@@ -78,7 +81,7 @@ function renderHabilidades(filtro = '') {
             </div>
         `;
     });
-    contenedor.innerHTML = html || '<p class="sin-resultados">No se encontraron habilidades.</p>';
+    contenedor.innerHTML = html || '<p class="sin-resultados">Non se atoparon habilidades.</p>';
 }
 
 function renderIdiomas() {
